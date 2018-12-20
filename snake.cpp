@@ -4,6 +4,9 @@
 #include <conio.h>
 #include <iostream>
 #include <ctime>
+
+#include <windows.h>
+
 #include <cstdlib>
 using namespace std;
 bool gameover;
@@ -51,7 +54,7 @@ void Input()
 		{
 		case 'a': dir = LEFT; break;
 		case 'd': dir = RIGHT; break;
-		case 's':dir = DOWN; break;
+		case 's': dir = DOWN; break;
 		case 'w': dir = UP; break;
 		case 'x': gameover = true; break;
 		}
@@ -88,6 +91,9 @@ int main()
 		Draw();
 		Input();
 		Large();
+    // usleep(50000);
+    // std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    Sleep(50);
 	}
 	return 0;
 }
