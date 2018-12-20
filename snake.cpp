@@ -17,7 +17,7 @@ void Setup()
 {
 	srand(time(NULL));
 	gameover = 0;
-	dir = STOP;
+	dir = STOP;//ururur
 	x = width / 2;
 	y = height / 2;
 	frux = rand() % width;
@@ -42,7 +42,7 @@ void Draw()
 	}
 	for (int i = 0; i <= width; i++)
 		cout << "0"; cout << endl;
-	cout <<"Ваш счет ="<< sc << endl;
+	cout <<"Your score ="<< sc << endl;
 }
 void Input()
 {
