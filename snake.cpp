@@ -42,7 +42,7 @@ void Draw()
 	}
 	for (int i = 0; i <= width; i++)
 		cout << "0"; cout << endl;
-	cout <<"Your score ="<< sc << endl;
+	cout <<"Your score = "<< sc << endl;
 }
 void Input()
 {
