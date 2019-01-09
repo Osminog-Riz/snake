@@ -1,14 +1,11 @@
-
-// #include "pch.h"
 #include <stdlib.h>
 #include <conio.h>
 #include <iostream>
 #include <ctime>
-
 #include <windows.h>
-
 #include <cstdlib>
 using namespace std;
+
 bool gameover;
 const int width = 20;
 const int height = 20;
@@ -21,8 +18,7 @@ void printTo(int x, int y, string text) {
 		printf("\033[1;1H");
 }
 
-void Setup()
-{
+void Setup() {
 	srand(time(NULL));
 	gameover = 0;
 	dir = STOP;
@@ -33,50 +29,34 @@ void Setup()
 	sc = 0;
 }
 
-void Draw()
-{
+void Draw() {
 	system("cls");
 	string display = "";
 	for (int i = 0; i < width + 2; i++) {
-		// cout << "0";
 		display += "0";
 	}
-	// cout << endl;
 	display += "\n";
-	for(int i=0;i<=height;i++)
-	{
-		for (int j = 0;j<=width;j++)
-		{
+	for(int i=0;i<=height;i++) {
+		for (int j = 0;j<=width;j++) {
 			if (j == 0 || j == width) {
 					display += "0";
-					// cout << "0";
-				}
+				  }
 			if (i == y && j == x) {
 					display += "Z";
-			// cout << "Z";
-		}
+		      }
 			else if (i == fruy && j == frux) {
-				// cout << "*";
 					display += "*";
 				}
 			else 	display += " ";
-			// cout << " ";
 		}
 			display += "\n";
-		// cout << endl;
 	}
 	for (int i = 0; i < width + 2; i++) {
-		// cout << "0";
 		display += "0";
-		// cout << endl;
 	}
-	display += "\nYour score = ";
-	display += sc;
-	// cout<<endl;
-	display += "\r\n";
 	cout << display;
+  cout<< "\nYour score = "<<sc<<endl;
 
-	// printf("gfdg");
 	// for (int i = 20; i > 0; i--) {
 	// 	printTo(i, i, "Z");
 	// 	Sleep(30);
@@ -99,9 +79,7 @@ void Input()
 }
 
 void Large() {
-	switch (dir)
-	{
-
+	switch (dir) {
 	case LEFT:x--;
 		break;
 	case RIGHT:x++;
@@ -111,27 +89,23 @@ void Large() {
 	case DOWN:y++;
 		break;
 	}
-	if (x < 0 || x>width || y<0 || y>height)
+	if (x < 0 || x>width || y<0 || y>height){
 		gameover = true;
-
+    }
 	if (x == frux && y == fruy)	{
 		sc++;
 		frux = rand() % width;
 		fruy = rand() % height;
-	}
+	   }
 }
 
-int main()
-{
+int main() {
 	setlocale(0, "rus");
 	Setup();
-	while (!gameover)
-	{
+	while (!gameover) {
 		Draw();
 		Input();
 		Large();
-    // usleep(50000);
-    // std::this_thread::sleep_for(std::chrono::milliseconds(500));
     Sleep(30);
 	}
 	return 0;
