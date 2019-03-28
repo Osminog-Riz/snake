@@ -13,12 +13,9 @@ int x, y, frux, fruy, sc;
 enum edir { STOP=0,LEFT,RIGHT,UP,DOWN};
 edir dir;
 
-void printTo(int x, int y, string text) {
-    printf("\033[%d;%dH%s\n", x, y, text.c_str());
-		printf("\033[1;1H");
-}
 
-void Setup() {
+
+void Setup() { //начальное состояние
 	srand(time(NULL));
 	gameover = 0;
 	dir = STOP;
@@ -27,22 +24,41 @@ void Setup() {
 	frux = rand() % width;
 	fruy = rand() % height;
 	sc = 0;
+
+  string display = "";
+	for (int i = 0; i < width + 1; i++) {
+		display += "0";
+	}
+	display += "\n";
+	for(int i=0; i<=height; i++) {
+		for (int j = 0; j<=width;j++) {
+			if (j == 0 || j == width) {
+					display += "0";
+				  }
+			else 	display += " ";
+		}
+			display += "\n";
+	}
+	for (int i = 0; i < width + 1; i++) {
+		display += "0";}
+    cout<<display;
 }
 
-void Draw() {
+void Draw() { //прорисовка
 	system("cls");
 	string display = "";
 	for (int i = 0; i < width + 2; i++) {
 		display += "0";
 	}
 	display += "\n";
-	for(int i=0;i<=height;i++) {
-		for (int j = 0;j<=width;j++) {
+	for(int i=0; i<=height; i++) {
+		for (int j = 0; j<=width;j++) {
 			if (j == 0 || j == width) {
 					display += "0";
 				  }
-			if (i == y && j == x) {
-					display += "Z";
+      if (i == y && j == x ) {
+          display += "Z";
+        }
 		      }
 			else if (i == fruy && j == frux) {
 					display += "*";
@@ -55,15 +71,10 @@ void Draw() {
 		display += "0";
 	}
 	cout << display;
-  cout<< "\nYour score = "<<sc<<endl;
-
-	// for (int i = 20; i > 0; i--) {
-	// 	printTo(i, i, "Z");
-	// 	Sleep(30);
-	// }
+  cout<< "\nYour score = "<< sc <<endl;
 }
 
-void Input()
+void Input() //ввод с консоли
 {
 	if (_kbhit()) {
 		switch (_getch())
@@ -73,6 +84,11 @@ void Input()
 		case 's': dir = DOWN; break;
 		case 'w': dir = UP; break;
 		case 'x': gameover = true; break;
+    case 'A': dir = LEFT; break;
+		case 'D': dir = RIGHT; break;
+		case 'S': dir = DOWN; break;
+		case 'W': dir = UP; break;
+		case 'X': gameover = true; break;
 		}
 
 	}
@@ -89,7 +105,7 @@ void Large() {
 	case DOWN:y++;
 		break;
 	}
-	if (x < 0 || x>width || y<0 || y>height){
+	if (x < 0 || x >= width || y < 0 || y > height){
 		gameover = true;
     }
 	if (x == frux && y == fruy)	{
@@ -100,7 +116,6 @@ void Large() {
 }
 
 int main() {
-	setlocale(0, "rus");
 	Setup();
 	while (!gameover) {
 		Draw();

@@ -1,0 +1,28 @@
+D:\GitHub\snake\snake.cpp: In function 'void Draw()':
+D:\GitHub\snake\snake.cpp:63:4: error: 'else' without a previous 'if'
+    else if (i == fruy && j == frux) {
+    ^~~~
+D:\GitHub\snake\snake.cpp:63:26: error: 'j' was not declared in this scope
+    else if (i == fruy && j == frux) {
+                          ^
+D:\GitHub\snake\snake.cpp: At global scope:
+D:\GitHub\snake\snake.cpp:70:2: error: expected unqualified-id before 'for'
+  for (int i = 0; i < width + 2; i++) {
+  ^~~
+D:\GitHub\snake\snake.cpp:70:18: error: 'i' does not name a type
+  for (int i = 0; i < width + 2; i++) {
+                  ^
+D:\GitHub\snake\snake.cpp:70:33: error: 'i' does not name a type
+  for (int i = 0; i < width + 2; i++) {
+                                 ^
+D:\GitHub\snake\snake.cpp:73:2: error: 'cout' does not name a type; did you mean 'outp'?
+  cout << display;
+  ^~~~
+  outp
+D:\GitHub\snake\snake.cpp:74:3: error: 'cout' does not name a type; did you mean 'outp'?
+   cout<< "\nYour score = "<< sc <<endl;
+   ^~~~
+   outp
+D:\GitHub\snake\snake.cpp:75:1: error: expected declaration before '}' token
+ }
+ ^
